@@ -5,10 +5,18 @@ from django.shortcuts import render
 from CoderShop.models import Productos
 
 # Create your views here.
-def producto(request):
+def inicio(request):
     
-    producto = Productos(nombre="Remera", codigo=4334, precio=1500)
-    producto.save()
-    documentoDeTexto = f"--->Producto: {producto.nombre} codigo: {producto.codigo} precio: {producto.precio}"
+    return render(request, 'CoderShop/inicio.html')
+
+def productos(request):
     
-    return HttpResponse(documentoDeTexto)
+    return render(request, 'CoderShop/productos.html')
+    
+def vendedores(request):
+    
+    return render(request, 'CoderShop/vendedores.html')
+
+def clientes(request):
+    
+    return render(request, 'CoderShop/clientes.html') 
