@@ -1,10 +1,10 @@
 from django.contrib import admin
-from CoderShop.models import Productos, Vendedor, Cliente
+from CoderShop.models import Producto, Vendedor, Cliente
 
 # Register your models here.
 
 
-admin.site.register(Productos)
+admin.site.register(Producto)
 
 admin.site.register(Vendedor)
 

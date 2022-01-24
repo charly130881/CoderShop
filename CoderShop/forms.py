@@ -13,3 +13,9 @@ class ClienteForm(forms.Form):
     apellido = forms.CharField()
     email = forms.EmailField()    
     telefono = forms.IntegerField()
+
+class ProductoForm(forms.Form):
+    
+    prenda = forms.CharField()
+    codigo = forms.IntegerField()
+    precio = forms.IntegerField()    

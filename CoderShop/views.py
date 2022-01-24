@@ -1,17 +1,18 @@
 from xml.dom.expatbuilder import DOCUMENT_NODE
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from CoderShop.forms import VendedorForm, ClienteForm
-from CoderShop.models import Productos, Vendedor, Cliente
+from CoderShop.forms import VendedorForm, ClienteForm, ProductoForm
+from CoderShop.models import Producto, Vendedor, Cliente
 
 # Create your views here.
 def inicio(request):
     
     return render(request, 'CoderShop/inicio.html')
 
-def productos(request):
+def producto(request):
     
-    return render(request, 'CoderShop/productos.html')
+    return render(request, 'CoderShop/producto.html',
+    {'producto': Producto.objects.all()})
     
 def vendedor(request):
     
@@ -37,6 +38,20 @@ def vendedorFormulario(request):
        
     return render(request, "CoderShop/vendedorFormulario.html", {"formulario":formulario})
 
+def productoFormulario(request):
+    if request.method == 'POST':
+        
+        formulario = ProductoForm(request.POST)
+        
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            Producto.objects.create(prenda=data['prenda'], codigo=data['codigo'], precio=data['precio'])
+            return redirect('Producto')
+    else:
+        formulario = ProductoForm()
+       
+    return render(request, "CoderShop/productoFormulario.html", {"formulario":formulario})
+
 def clienteFormulario(request):
     if request.method == 'POST':
         
@@ -56,15 +71,17 @@ def buscarLegajo(request):
     return render(request, "CoderShop/buscarLegajo.html")
 
 def buscar(request):
-    
-    # respuesta = f"Estoy buscando el legajo nro.: {request.GET['legajo']}"
-    legajo = request.GET['legajo']
-    
-    vendedor = Vendedor.objects.filter(legajo=legajo)
-        
-    return render(request, "CoderShop/buscar.html",
-    {'vendedor':vendedor, 'legajo': legajo})
-    # else:
-    #     respuesta = "No enviaste datos"
    
-    # return HttpResponse(respuesta)
+    if request.GET['legajo']:
+        # respuesta = f"Estoy buscando el legajo nro.: {request.GET['legajo']}"
+        legajo = request.GET.get['legajo']
+    
+        vendedor = Vendedor.objects.filter(legajo=legajo)
+        
+        return render(request, "CoderShop/buscar.html",
+         {'vendedor':vendedor, 'legajo': legajo})
+        
+    else:
+        respuesta = "No enviaste datos"
+   
+    return HttpResponse(respuesta)
