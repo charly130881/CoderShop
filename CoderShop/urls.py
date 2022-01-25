@@ -13,8 +13,6 @@ urlpatterns = [
     path('clienteFormulario', clienteFormulario, name="clienteFormulario"),
     path('productoFormulario', productoFormulario, name="productoFormulario"),
     path('buscarLegajo', buscarLegajo, name="BuscarLegajo"),
-    path('buscar', buscar, name="buscar"),
-    
-    
+    path('buscar', buscar, name="buscar"),    
 ]         
          

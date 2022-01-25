@@ -8,7 +8,7 @@ class Producto(models.Model):
     precio = models.IntegerField()
     
     def __str__(self):
-        return f'Producto {self.prenda} {self.codigo} {self.precio}'
+        return f'Prenda: {self.prenda} | Código: {self.codigo} | Precio: $ {self.precio}'
     
 class Vendedor(models.Model):
     
@@ -17,7 +17,7 @@ class Vendedor(models.Model):
     legajo = models.IntegerField()
     
     def __str__(self):
-        return f'Vendedor {self.nombre} {self.apellido} {self.legajo}'
+        return f'Vendedor/a: {self.nombre} {self.apellido} | Legajo: {self.legajo}'
     
 class Cliente(models.Model):
     
@@ -27,6 +27,6 @@ class Cliente(models.Model):
     telefono = models.IntegerField()
     
     def __str__(self):
-        return f'Cliente {self.nombre} {self.apellido} {self.email} {self.telefono}'
+        return f'Cliente: {self.nombre} {self.apellido} | e-mail: {self.email} | Teléfono: {self.telefono}'
     
     

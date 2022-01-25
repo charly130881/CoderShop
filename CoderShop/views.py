@@ -5,6 +5,7 @@ from CoderShop.forms import VendedorForm, ClienteForm, ProductoForm
 from CoderShop.models import Producto, Vendedor, Cliente
 
 # Create your views here.
+
 def inicio(request):
     
     return render(request, 'CoderShop/inicio.html')
@@ -74,7 +75,7 @@ def buscar(request):
    
     if request.GET['legajo']:
         # respuesta = f"Estoy buscando el legajo nro.: {request.GET['legajo']}"
-        legajo = request.GET.get['legajo']
+        legajo = request.GET['legajo']
     
         vendedor = Vendedor.objects.filter(legajo=legajo)
         
@@ -84,4 +85,5 @@ def buscar(request):
     else:
         respuesta = "No enviaste datos"
    
-    return HttpResponse(respuesta)
+    # return HttpResponse(respuesta)
+    return render(request, "CoderShop/inicio.html", {"respuesta":respuesta})

@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "CoderShop/padre.html" %} {% load static %} {% block contenidoQueCambia %} {% if formulario.erros %}
+<p style="color: red;">Están mal los datos, revisar</p>
+{% endif %} {% if vendedor %}
+<p>Hemos encontrado el legajo: {{legajo}}</p>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultado</title>
-</head>
+<ul>
+    {% for vendedor in vendedor %}
 
-<body>
+    <li> {{vendedor}}</li>
 
-    {% if vendedor %}
+    {% endfor %}
+</ul>
+{% else %}
+<br>
+<h3>No hay datos con esa descripción.</h3>
+{% endif %}
 
-    <ul>
-        {% for vendedor in vendedor %}
-
-        <li> {{vendedor}}</li>
-
-        {% endfor %}
-    </ul>
-    {% endif %}
-</body>
-
-</html>
+<a class="btn btn-outline-dark" href="{% url 'BuscarLegajo' %}">Volver
+</a>
+<p style="color: red;">{{respuesta}}</p>{% endblock %}
