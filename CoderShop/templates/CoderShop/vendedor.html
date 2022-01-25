@@ -1,3 +1,3 @@
 {% extends "CoderShop/padre.html" %}{% load static %} {% block contenidoQueCambia %}
-<h1>ESTOS SON NUESTROS VENDEDORES</h1>{%for vendedor in vendedor%}{{ vendedor }}<br> {% endfor %} <br> <a class="btn btn-outline-dark" href="{% url 'vendedorFormulario' %}">Agregar
-</a> {% endblock%}
+<h1>ESTOS SON NUESTROS VENDEDORES</h1>{%for vendedor in vendedor%}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ vendedor }}<br> {% endfor %} <br> <a class="btn btn-outline-dark" href="{% url 'vendedorFormulario' %}">Agregar
+</a> <br><br>{% endblock%}

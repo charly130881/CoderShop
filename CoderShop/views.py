@@ -87,3 +87,28 @@ def buscar(request):
    
     # return HttpResponse(respuesta)
     return render(request, "CoderShop/inicio.html", {"respuesta":respuesta})
+
+
+def buscarNombre(request):
+    
+    return render(request, "CoderShop/buscarNombre.html")
+
+def buscar2(request):
+   
+    if request.GET['nombre']:
+        # respuesta = f"Estoy buscando el legajo nro.: {request.GET['legajo']}"
+        nombre = request.GET['nombre']
+        
+    
+        vendedor = Vendedor.objects.filter(nombre=nombre)
+        
+        
+        
+        return render(request, "CoderShop/buscar2.html",
+         {'vendedor':vendedor, 'nombre': nombre})
+        
+    else:
+        respuesta = "No enviaste datos"
+   
+    # return HttpResponse(respuesta)
+    return render(request, "CoderShop/inicio.html", {"respuesta":respuesta})

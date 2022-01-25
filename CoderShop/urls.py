@@ -1,6 +1,6 @@
 from django.urls import path
 from CoderShop import views
-from CoderShop.views import buscar, cliente, inicio, producto, vendedor, vendedorFormulario, clienteFormulario, buscarLegajo, productoFormulario
+from CoderShop.views import buscar, buscarNombre, cliente, inicio, producto, vendedor, vendedorFormulario, clienteFormulario, buscarLegajo, productoFormulario, buscar2
 
 
 urlpatterns = [
@@ -13,6 +13,8 @@ urlpatterns = [
     path('clienteFormulario', clienteFormulario, name="clienteFormulario"),
     path('productoFormulario', productoFormulario, name="productoFormulario"),
     path('buscarLegajo', buscarLegajo, name="BuscarLegajo"),
-    path('buscar', buscar, name="buscar"),    
+    path('buscar', buscar, name="buscar"), 
+    path('buscarNombre', buscarNombre, name="buscarNombre"),
+    path('buscar2', buscar2, name="buscar2"),   
 ]         
          

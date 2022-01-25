@@ -1,0 +1,11 @@
+{% extends "CoderShop/padre.html" %} {% load static %} {% block contenidoQueCambia %} {% if formulario.erros %}
+<p style="color: red;">Están mal los datos, revisar</p>
+{% endif %}
+
+
+<h2>Buscar Nombre</h2>
+<form action="buscar2" method="GET">
+    <input type="text" name="nombre">
+
+    <input type="submit" value="Buscar">
+</form><br>{% endblock %}
