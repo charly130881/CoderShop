@@ -1,7 +1,7 @@
 {% extends "CoderShop/padre.html" %} {% load static %} {% block contenidoQueCambia %} {% if formulario.erros %}
 <p style="color: red;">Están mal los datos, revisar</p>
 {% endif %} {% if vendedor %}
-<p>Hemos encontrado el legajo: {{legajo}}</p>
+<h3><strong>Hemos encontrado el legajo: {{legajo}}</strong></h3>
 
 <ul>
     {% for vendedor in vendedor %}
@@ -12,7 +12,7 @@
 </ul>
 {% else %}
 <br>
-<h3>No hay datos con esa descripción.</h3>
+<h3><strong>No hay datos con esa descripción.</strong></h3>
 {% endif %}
 
 <a class="btn btn-outline-dark" href="{% url 'BuscarLegajo' %}">Volver
