@@ -54,7 +54,7 @@ System check identified no issues (0 silenced).
 You have unapplied migrations; your app may not work properly until they are applied.
 Run 'python manage.py migrate' to apply them.**
 
-# CONSTRUIDO CON :fa-gears: :fa-wrench: : 
+# CONSTRUIDO CON: 
 - DB browser sqlite (administracion de base de datos.)
 - Django (framework.)
 - Visual Studio Code (IDE)
@@ -62,6 +62,6 @@ Run 'python manage.py migrate' to apply them.**
 - HTML CSS. 
 - JavaScript. 
 
-# CONTACTO DESARROLLADORES:
-:fa-envelope-square: charly130881@gmail.com
-:fa-envelope-square: lucashuenul6645@gmail.com
+# CONTACTO DESARROLLADORES :
+✉ charly130881@gmail.com
+✉ lucashuenul6645@gmail.com
