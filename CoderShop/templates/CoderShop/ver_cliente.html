@@ -1,0 +1,9 @@
+{% extends "CoderShop/padre.html" %} {% block contenidoQueCambia %}
+<ul>
+    <li>Nombre/s: {{cliente.nombre}}</li>
+    <li>Apellido/s: {{cliente.apellido}}</li>
+    <li>Email: {{cliente.email}}</li>
+    <li>Teléfono: {{cliente.telefono}}</li>
+
+    <a class="btn btn-outline-dark" href="{% url 'cliente' %}">Volver</a>
+</ul>{% endblock%}

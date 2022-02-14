@@ -1,0 +1,36 @@
+{% extends "CoderShop/welcomePage.html" %} {% load static %} {% block contenidoQueCambia %} {% if formulario.erros %}
+<p style="color: red;">Están mal los datos, revisar</p>
+{% endif %}
+<form class="form" method="post">
+    {% csrf_token %} {{form.as_p}}
+
+    <button type="submit" id="submit">Registrarse</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'WelcomePage' %}">Volver</a>
+</form>
+
+{% endblock %}
+
+
+
+
+
+
+<!-- <li class=" nav-item dropdown ">
+    <a class="nav-link dropdown-toggle " id="navbarDropdown " href=" " role="button " data-bs-toggle="dropdown " aria-expanded="false ">Vendedores</a>
+    <ul class="dropdown-menu " aria-labelledby="navbarDropdown ">
+
+        <li><a class="dropdown-item " href="{% url 'buscarNombre' %} ">Por Nombre</a></li>
+
+        <li><a class="dropdown-item " href="{% url 'BuscarLegajo' %} ">Por Legajo</a></li>
+
+    </ul>
+    </li>
+    <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle " id="navbarDropdown " href=" " role="button " data-bs-toggle="dropdown " aria-expanded="false ">Clientes</a>
+        <ul class="dropdown-menu " aria-labelledby="navbarDropdown ">
+
+            <li><a class="dropdown-item " href="{% url 'buscarNombre' %} ">Por Nombre</a></li>
+
+            <li><a class="dropdown-item " href="{% url 'BuscarLegajo' %} ">Por Telefono</a></li>
+
+        </ul>
+    </li> -->
