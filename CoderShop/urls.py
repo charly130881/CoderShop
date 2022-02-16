@@ -1,7 +1,8 @@
 from django.urls import path
 from CoderShop import views
-from CoderShop.views import ProductoListView, ProductoDetailView, ProductoCreateView, ProductoUpdateView, ProductoDeleteView, ClienteCreateView, ClienteListView, ClienteUpdateView, ClienteDeleteView, ClienteDetailView, VendedorCreateView, VendedorListView, VendedorUpdateView, VendedorDeleteView, VendedorDetailView, buscar, buscarNombre, cliente, inicio, login_request, producto, register, vendedor, clienteFormulario, buscarLegajo, productoFormulario, buscar2, welcomePage
-from django.contrib.auth.views import LogoutView
+from CoderShop.views import ProductoListView, ProductoDetailView, ProductoCreateView, ProductoUpdateView, ProductoDeleteView, ClienteCreateView, ClienteListView, ClienteUpdateView, ClienteDeleteView, ClienteDetailView, UserCreateView, VendedorCreateView, VendedorListView, VendedorUpdateView, VendedorDeleteView, VendedorDetailView, agregarAvatar, buscar, buscarNombre, cliente, inicio, producto, vendedor, clienteFormulario, buscarLegajo, productoFormulario, buscar2, welcomePage, editarUsuario
+from django.contrib.auth.views import LogoutView, LoginView
+
 
 urlpatterns = [
     
@@ -38,8 +39,15 @@ urlpatterns = [
     path('producto/update/<pk>', ProductoUpdateView.as_view(), name='producto_update'),
     path('producto/delete/<pk>', ProductoDeleteView.as_view(), name='producto_confirm_delete'),
     # Login
-    path('login', login_request, name='login'),   
-    path('register', register, name='register'), 
+    path('login', LoginView.as_view(template_name='CoderShop/login.html'), name='login'),   
+    path('register', UserCreateView.as_view(template_name='CoderShop/register.html'), name='register'), 
     path('logout', LogoutView.as_view(template_name='CoderShop/logout.html'), name='logout'),
-]     
+    path('editarUsuario', editarUsuario, name='editarUsuario'),
+    path('agregarAvatar', agregarAvatar, name='agregarAvatar'),
+    
+]
+
+
+
+         
          

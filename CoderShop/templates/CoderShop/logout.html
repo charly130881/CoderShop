@@ -1,5 +1,5 @@
 {% extends "CoderShop/welcomePage.html" %} {% load static %} {% block contenidoQueCambia %}{% if form.erros %}
 <p style="color: red;">Están mal los datos, revisar</p>
 {% endif %}
-<h1>Te has deslogueado...</h1>
+<h1>{{user.username}} Te has deslogueado...</h1>
 {% endblock %}

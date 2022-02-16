@@ -1,0 +1,13 @@
+{% extends "CoderShop/padre.html" %}{% load static %} {% block contenidoQueCambia %}{% if formulario.erros %}
+<p style="color: red;">Están mal los datos, revisar</p>
+{% endif %}
+<h3>Editar Usuario de: {{usuario}}</h3>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ formulario.as_table }}
+    </table>
+
+    <input type="submit" value="Editar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'Inicio' %}">Volver</a>
+</form>{% endblock %}
