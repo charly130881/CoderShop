@@ -1,8 +1,10 @@
 {% extends "CoderShop/padre.html" %} {% block contenidoQueCambia %}
 <ul>
     <li>Prenda: {{producto.prenda}}</li>
-    <li>Código: {{producto.codigo}}</li>
-    <li>Precio: {{producto.precio}}</li>
+    <li>Código: #{{producto.codigo}}</li>
+    <li>Precio: ${{producto.precio}}</li>
+    {% if producto.imagen %}<img src="{{ producto.imagen.url }}" height="200px">{% endif %}
+
 
     <a class="btn btn-outline-dark" href="{% url 'producto' %}">Volver</a>
 </ul>{% endblock%}

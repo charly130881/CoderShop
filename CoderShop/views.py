@@ -53,7 +53,7 @@ def producto(request):
 def vendedor(request):
     
     return render(request, 'CoderShop/vendedor.html',
-     {'vendedor': Vendedor.objects.all()})
+    {'vendedor': Vendedor.objects.all()})
 
 @login_required
 def cliente(request):
@@ -201,13 +201,13 @@ class VendedorDetailView(AvatarView, DetailView):
 class VendedorCreateView(AvatarView, CreateView):
     model = Vendedor
     success_url = reverse_lazy('Vendedor')
-    fields = ['nombre', 'apellido', 'legajo']    
+    fields = ['nombre', 'apellido', 'legajo', 'imagen']    
     template_name = 'CoderShop/vendedorformulario.html'
     
 class VendedorUpdateView(AvatarView, UpdateView):
     model = Vendedor
     success_url = reverse_lazy('Vendedor')
-    fields = ['nombre', 'apellido', 'legajo']    
+    fields = ['nombre', 'apellido', 'legajo', 'imagen']    
     template_name = 'CoderShop/vendedorformulario.html'  
       
 class VendedorDeleteView(AvatarView, DeleteView):
@@ -259,13 +259,13 @@ class ProductoDetailView(AvatarView, DetailView):
 class ProductoCreateView(AvatarView, CreateView):
     model = Producto
     success_url = reverse_lazy('producto')
-    fields = ['prenda', 'codigo', 'precio']    
+    fields = ['prenda', 'codigo', 'precio', 'imagen']    
     template_name = 'CoderShop/productoformulario.html'
     
 class ProductoUpdateView(AvatarView, UpdateView):
     model = Producto
     success_url = reverse_lazy('producto')
-    fields = ['prenda', 'codigo', 'precio']    
+    fields = ['prenda', 'codigo', 'precio', 'imagen']    
     template_name = 'CoderShop/productoformulario.html'  
       
 class ProductoDeleteView(AvatarView, DeleteView):
@@ -356,5 +356,7 @@ def agregarAvatar(request):
     
     else:
         form = AvatarFormulario()
-    return render(request, 'CoderShop/agregarAvatar.html', {'form':form})        
+    return render(request, 'CoderShop/agregarAvatar.html', {'form':form})     
+
+  
 

@@ -3,6 +3,10 @@
     <li>Nombre/s: {{vendedor.nombre}}</li>
     <li>Apellido/s: {{vendedor.apellido}}</li>
     <li>Legajo: {{vendedor.legajo}}</li>
+    <li>Imagen: {% if vendedor.imagen %}&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ vendedor.imagen.url }}" height="60px">{% endif %}
+    </li>
 
-    <a class="btn btn-outline-dark" href="{% url 'Vendedor' %}">Volver</a>
-</ul>{% endblock%}
+
+    <a class="btn btn-outline-dark " href="{% url 'Vendedor' %} ">Volver</a>
+</ul>
+{% endblock %}

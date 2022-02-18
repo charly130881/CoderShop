@@ -1,4 +1,3 @@
 {% extends "CoderShop/padre.html" %}{% load static %} {% block contenidoQueCambia %}
 <h1>PRODUCTOS</h1>{%for producto in producto %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ producto }}&nbsp;&nbsp;&nbsp;&nbsp;<button><a href="{% url 'producto_confirm_delete' producto.id %}">Eliminar</a></button>&nbsp;&nbsp;<button><a href="{% url 'producto_update' producto.id %}">Editar</a></button>&nbsp;&nbsp;<button><a href="{% url 'ver_producto' producto.id %}">Ver</a></button>
-<br> {% endfor %}<br> <a class="btn btn-outline-dark" href="{% url 'productoFormulario' %}">Agregar
-</a> <br><br>{% endblock%}
+<br> {% endfor %}<br> <a class="btn btn-outline-dark" href="{% url 'productoFormulario' %}">Agregar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'Inicio' %}">Volver</a> <br><br>{% endblock%}

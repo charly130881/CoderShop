@@ -10,6 +10,7 @@ class VendedorForm(forms.Form):
     nombre = forms.CharField()
     apellido = forms.CharField()
     legajo = forms.IntegerField()
+    imagen = forms.ImageField()
     
     
 class ClienteForm(forms.Form):
@@ -23,7 +24,8 @@ class ProductoForm(forms.Form):
     
     prenda = forms.CharField()
     codigo = forms.IntegerField()
-    precio = forms.IntegerField() 
+    precio = forms.IntegerField()
+    imagen = forms.ImageField() 
     
 class UserRegisterForm(UserCreationForm):
     
