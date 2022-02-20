@@ -9,5 +9,7 @@
         {{ formulario.as_table }}
     </table>
 
-    <input type="submit" value="Editar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'Inicio' %}">Volver</a>
+    <input class="btn btn-outline-dark" type="submit" value="Editar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'Inicio' %}">Volver</a>
+
+    <a class="btn btn-outline-dark" href="{% url 'agregarAvatar' %}">Agregar Ávatar</a>
 </form>{% endblock %}

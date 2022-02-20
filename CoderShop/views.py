@@ -5,10 +5,10 @@ from django.contrib import messages
 from xml.dom.expatbuilder import DOCUMENT_NODE
 from django.forms import model_to_dict
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.template import context
 from CoderShop.forms import AvatarFormulario, UserRegisterForm, VendedorForm, ClienteForm, ProductoForm
-from CoderShop.models import Avatar, Producto, Vendedor, Cliente
+from CoderShop.models import Avatar, Post, Producto, Vendedor, Cliente
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -60,6 +60,14 @@ def cliente(request):
     
     return render(request, 'CoderShop/cliente.html',
     {'cliente': Cliente.objects.all()})
+    
+@login_required
+def post(request):
+    
+    return render(request, 'CoderShop/blog.html',
+    {'post': Post.objects.all()})    
+    
+    
 
 # def vendedorFormulario(request):
 #     if request.method == 'POST':
@@ -311,7 +319,7 @@ class ProductoDeleteView(AvatarView, DeleteView):
            
 #             return render(request, 'CoderShop/register.html', {'form' : form })
         
-class UserCreateView(AvatarView, CreateView)  :
+class UserCreateView(CreateView)  :
     model = User  
     # succes_url = reverse_lazy('login.html')
     template_name = 'register.html'
@@ -357,6 +365,40 @@ def agregarAvatar(request):
     else:
         form = AvatarFormulario()
     return render(request, 'CoderShop/agregarAvatar.html', {'form':form})     
+
+# Blog
+
+class BlogListView(AvatarView, ListView):
+    model = Post
+    template_name ='CoderShop/blog.html'
+    context_object_name = 'post'
+    
+class BlogCreateView(AvatarView, CreateView):
+    model = Post
+    success_url = reverse_lazy('post')
+    fields = ['titulo', 'descripcion', 'contenido', 'publicado', 'autor', 'estado']    
+    template_name = 'CoderShop/postformulario.html'  
+    
+class BlogDetailView(AvatarView, DetailView):
+    model = Post
+    template_name = 'CoderShop/ver_post.html'   
+     
+class BlogUpdateView(AvatarView, UpdateView):
+    model = Post
+    success_url = reverse_lazy('post')
+    fields = ['titulo', 'descripcion', 'contenido', 'publicado', 'autor', 'estado']    
+    template_name = 'CoderShop/postformulario.html'
+    
+class BlogDeleteView(AvatarView, DeleteView):
+    model = Post
+    success_url = reverse_lazy('post')
+    template_name = 'CoderShop/post_confirm_delete.html'         
+    
+ 
+    
+    
+
+
 
   
 

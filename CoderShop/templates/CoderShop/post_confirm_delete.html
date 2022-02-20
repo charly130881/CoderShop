@@ -1,0 +1,15 @@
+{% extends "CoderShop/blogPadre.html" %} {% load static %} {% block contenidoQueCambia %}
+
+<p>Esta seguro de borrar a:</p>
+<form action="" method="POST">{% csrf_token %}
+
+    <ul>
+        <li>Titulo: {{post.titulo}}</li>
+        <li>Descripción: {{post.descripcion}}</li>
+        <li>Autor: {{post.autor}}</li>
+    </ul>
+
+    <input class="btn btn-outline-dark" type="submit" value="Borrar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'post' %}">Volver</a>
+
+</form>
+{% endblock%}

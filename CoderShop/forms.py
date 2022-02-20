@@ -2,7 +2,7 @@
 from django import forms 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.forms import EmailField, CharField, Form, ImageField, PasswordInput
+from django.forms import DateField, EmailField, CharField, Form, ImageField, PasswordInput, SlugField
 
 
 class VendedorForm(forms.Form):
@@ -54,4 +54,12 @@ class UserEditForm(UserCreationForm):
         help_text = {k:"" for k in fields} 
 
 class AvatarFormulario(Form):
-    imagen = ImageField(required=True)           
+    imagen = ImageField(required=True)  
+    
+class BlogForm(forms.Form):
+    titulo = CharField(max_length=255)
+    descripcion = CharField(max_length=40)
+    contenido = CharField(max_length=300)
+    publicado = DateField()
+    autor = CharField()
+    estado = CharField()             

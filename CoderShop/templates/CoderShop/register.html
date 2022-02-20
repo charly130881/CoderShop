@@ -1,7 +1,7 @@
 {% extends "CoderShop/welcomePage.html" %} {% load static %} {% block contenidoQueCambia %} {% if form.erros %}
 <p style="color: red;">Están mal los datos, revisar</p>
 {% endif %}
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
         {{form.as_table}}

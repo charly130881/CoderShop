@@ -1,6 +1,6 @@
 from django.urls import path
 from CoderShop import views
-from CoderShop.views import ProductoListView, ProductoDetailView, ProductoCreateView, ProductoUpdateView, ProductoDeleteView, ClienteCreateView, ClienteListView, ClienteUpdateView, ClienteDeleteView, ClienteDetailView, UserCreateView, VendedorCreateView, VendedorListView, VendedorUpdateView, VendedorDeleteView, VendedorDetailView, agregarAvatar, buscar, buscarNombre, cliente, inicio, producto, vendedor, clienteFormulario, buscarLegajo, productoFormulario, buscar2, welcomePage, editarUsuario
+from CoderShop.views import BlogDeleteView, BlogDetailView, BlogListView, BlogCreateView, BlogUpdateView, ProductoListView, ProductoDetailView, ProductoCreateView, ProductoUpdateView, ProductoDeleteView, ClienteCreateView, ClienteListView, ClienteUpdateView, ClienteDeleteView, ClienteDetailView, UserCreateView, VendedorCreateView, VendedorListView, VendedorUpdateView, VendedorDeleteView, VendedorDetailView, agregarAvatar, buscar, buscarNombre, cliente, inicio, producto, vendedor, clienteFormulario, buscarLegajo, productoFormulario, buscar2, welcomePage, editarUsuario
 from django.contrib.auth.views import LogoutView, LoginView
 
 
@@ -8,19 +8,12 @@ urlpatterns = [
     
     path('', welcomePage, name="WelcomePage"),
     path('inicio', inicio, name="Inicio"),
-    # path('producto', producto, name="Producto"),
-    # path('vendedor', vendedor, name="Vendedor"),
-    # path('cliente', cliente, name="Cliente"),
-    # # path('vendedorFormulario', vendedorFormulario, name="vendedorFormulario"),
-    # path('clienteFormulario', clienteFormulario, name="clienteFormulario"),
-    # path('productoFormulario', productoFormulario, name="productoFormulario"),
+    # Busqueda
     path('buscarLegajo', buscarLegajo, name="BuscarLegajo"),
     path('buscar', buscar, name="buscar"), 
     path('buscarNombre', buscarNombre, name="buscarNombre"),
     path('buscar2', buscar2, name="buscar2"),  
-    
-    # path('vendedor/delete/<vendedor_id>', vendedor_delete, name='vendedor_delete'),
-    # path('vendedor/update/<vendedor_id>', vendedor_update, name='vendedor_update'),
+    # Vendedor
     path('vendedor', VendedorListView.as_view(), name="Vendedor"),
     path('vendedor/detail/<pk>', VendedorDetailView.as_view(), name="ver_vendedor"),
     path('vendedorFormulario', VendedorCreateView.as_view(), name="vendedorFormulario"),
@@ -44,8 +37,18 @@ urlpatterns = [
     path('logout', LogoutView.as_view(template_name='CoderShop/logout.html'), name='logout'),
     path('editarUsuario', editarUsuario, name='editarUsuario'),
     path('agregarAvatar', agregarAvatar, name='agregarAvatar'),
+    # Blog
+    path('post', BlogListView.as_view(), name='post'),
+    path('post/detail/<pk>', BlogDetailView.as_view(), name="ver_post"),
+    path('postFormulario', BlogCreateView.as_view(), name="postFormulario"),
+    path('postFormulario/update/<pk>', BlogUpdateView.as_view(), name="post_update"),
+    path('post/delete/<pk>', BlogDeleteView.as_view(), name='post_confirm_delete'),
     
+    
+   
 ]
+    
+
 
 
 

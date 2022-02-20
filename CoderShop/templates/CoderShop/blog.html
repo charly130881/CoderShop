@@ -1,0 +1,10 @@
+{% extends "CoderShop/blogPadre.html" %} {% load static %} {% block contenidoQueCambia %} {% for post in object_list %}
+<table>
+    <h2>{{post.titulo}}</h2>
+    <p>{{post.descripcion}}</p>
+    <p>{{post.contenido}}</p>
+    <p>{{post.publicado}}</p>
+    <p>{{post.autor}}</p>
+</table>
+<a class="btn btn-outline-dark" href="{% url 'post_confirm_delete' post.id %}">Eliminar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'post_update' post.id %}">Editar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'ver_post' post.id %}">Ver</a>
+<br> {% endfor %}<br> <a class="btn btn-outline-dark" href="{% url 'postFormulario' %}">Agregar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'Inicio' %}">Volver</a> <br><br> {% endblock %}

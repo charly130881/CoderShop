@@ -1,0 +1,7 @@
+{% extends "CoderShop/blogPadre.html" %} {% block contenidoQueCambia %}
+<ul>
+    <li>Titulo: {{post.titulo}}</li>
+    <li>Descripción: {{post.descripcion}}</li>
+    <li>Autor: {{post.autor}}</li>
+    <a class="btn btn-outline-dark" href="{% url 'post' %}">Volver</a>
+</ul>{% endblock%}

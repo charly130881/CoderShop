@@ -1,0 +1,13 @@
+{% extends "CoderShop/blogPadre.html" %} {% load static %} {% block contenidoQueCambia %} {% if form.erros %}
+<p style="color: red;">Están mal los datos, revisar</p>
+{% endif %}
+<p>Agregar Posteo</p>
+<form action="" method="POST">{% csrf_token %}
+
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <input class="btn btn-outline-dark" type="submit" value="Agregar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'post' %}">Volver</a>
+
+</form> {% endblock %}
