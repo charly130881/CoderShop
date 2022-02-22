@@ -65,3 +65,6 @@ Run 'python manage.py migrate' to apply them.**
 # CONTACTO DESARROLLADORES :
 ✉ charly130881@gmail.com
 ✉ lucashuenul6645@gmail.com
+
+# LINK AL VIDEO DE MUESTAR DE LA WEB :
+https://youtu.be/z5zIcywo0Uo
