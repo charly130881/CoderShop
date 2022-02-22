@@ -11,7 +11,7 @@
     <meta name="author" content="" />
     <title>Coder Shop</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/media/CoderShop.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -28,21 +28,9 @@
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'Inicio' %}">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'Vendedor' %}">Vendedores</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'cliente' %}">Clientes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'producto' %}">Productos</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'producto' %}">Todos los Productos</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="#!">Populares</a></li>
-                            <li>
-                                <a class="dropdown-item" href="#!">Lo nuevo!</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Buscar</a>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Buscar Vendedor</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                             <li><a class="dropdown-item" href="{% url 'buscarNombre' %}">Por Nombre</a></li>
@@ -55,7 +43,7 @@
                 </ul>
                 <a class="navbar-brand" href="{% url 'editarUsuario' %}">
                     <h3 class="text-muted small mb-4 mb-lg-0">Hola {{user.username}}!!</h3>
-                </a>{% if request.user.is_authenticated %} &nbsp;&nbsp;
+                </a>{% if request.user.is_authenticated %} &nbsp;&nbsp; {}
                 <a class="navbar-brand" href="{% url 'agregarAvatar' %}"> <img src="{{url}}" height="45px" /></a>{% endif %}
                 <a class="navbar-brand" href="{% url 'logout' %}">Logout</a>
             </div>
@@ -66,24 +54,24 @@
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Coder Shop es estilo</h1>
-                <p class="lead fw-normal text-white-50 mb-0">Comprá con confianza</p>
+                <img src="/media/CoderShop.png" width="400px" height=" 300px ">
+                <p class="lead fw-normal text-white-50 mb-0 ">Comprá con confianza</p>
             </div>
         </div>
     </header>
     <!-- Section-->
     {% block contenidoQueCambia %} {% endblock%}
     <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; CoderShop 2022</p>
+    <footer class="py-5 bg-dark ">
+        <div class="container ">
+            <p class="m-0 text-center text-white ">Copyright &copy; CoderShop 2022</p>
         </div>
     </footer>
     <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js "></script>
     <!-- Core theme JS-->
     {% load static %}
-    <script src="{% static 'CoderShop/js/scripts.js' %}" type="text/javascript"></script>
+    <script src="{% static 'CoderShop/js/scripts.js' %} " type="text/javascript "></script>
 </body>
 
 </html>

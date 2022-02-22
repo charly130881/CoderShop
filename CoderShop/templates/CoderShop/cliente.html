@@ -1,4 +1,4 @@
 {% extends "CoderShop/padre.html" %}{% load static %} {% block contenidoQueCambia %}
-<h1>CLIENTES</h1>{%for cliente in cliente %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ cliente }}&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'cliente_confirm_delete' cliente.id %}">Eliminar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark"
+<h3>CLIENTES</h3>{%for cliente in cliente %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ cliente }}&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'cliente_confirm_delete' cliente.id %}">Eliminar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark"
     href="{% url 'cliente_update' cliente.id %}">Editar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'ver_cliente' cliente.id %}">Ver</a>
 <br> {% endfor %}<br> <a class="btn btn-outline-dark" href="{% url 'clienteFormulario' %}">Agregar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'Inicio' %}">Volver</a> <br><br> {% endblock %}

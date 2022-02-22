@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CoderShop',
-    
+    'ckeditor',    
 ]
 
 MIDDLEWARE = [
@@ -131,3 +131,4 @@ LOGIN_REDIRECT_URL = 'Inicio'
 #Imagenes
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CKEDITOR_UPLOAD_PATH = "uploads/"

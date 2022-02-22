@@ -1,4 +1,25 @@
 {% extends "CoderShop/padre.html" %}{% load static %} {% block contenidoQueCambia %}
-<h1>ESTOS SON NUESTROS VENDEDORES</h1>{% for vendedor in object_list %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ vendedor }}&nbsp;&nbsp; <a class="btn btn-outline-dark" href="{% url 'vendedor_confirm_delete' vendedor.id %}">Eliminar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark"
-    href="{% url 'vendedor_update' vendedor.id %}">Editar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'ver_vendedor' vendedor.id %}">Ver</a>
-<br> {% endfor %} <br> <a class="btn btn-outline-dark" href="{% url 'vendedorFormulario' %}">Agregar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'Inicio' %}">Volver</a> <br><br>{% endblock %}
+<h3>ESTOS SON NUESTROS VENDEDORES</h3>
+
+<div class="container">
+    <div class=" row ">
+        {% for vendedor in object_list %}
+        <div class="col-3 ">
+            <div class="card " style="width: 16rem;" margin-left>
+                {% if vendedor.imagen %}<img src="{{ vendedor.imagen.url }}" height="250px">{% endif %}
+                <div class=" card-body " style="background-color:antiquewhite;">
+                    <h5 class="card-title " style="text-align: center;">{{vendedor.nombre}}</h5>
+                    <h5 class="card-text " style="text-align: center;">{{vendedor.apellido}}</h5><br>
+                    <h4 class="card-text " style="text-align: center;">Legajo: {{vendedor.legajo}}</h4><br>
+                </div>
+            </div>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark " href="{% url 'vendedor_confirm_delete' vendedor.id %} ">Eliminar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark " href="{% url 'vendedor_update' vendedor.id %} ">Editar</a>&nbsp;&nbsp;
+            <a class="btn btn-outline-dark
+            " href="{% url 'ver_vendedor' vendedor.id %} ">Ver</a>
+            <br><br>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+<br><br><a class="btn btn-outline-dark" href="{% url 'vendedorFormulario' %}">Agregar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'Inicio' %}">Volver</a> <br><br>{% endblock%}

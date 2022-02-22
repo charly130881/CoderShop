@@ -1,7 +1,14 @@
 {% extends "CoderShop/blogPadre.html" %} {% block contenidoQueCambia %}
 <ul>
-    <li>Titulo: {{post.titulo}}</li>
-    <li>Descripción: {{post.descripcion}}</li>
-    <li>Autor: {{post.autor}}</li>
-    <a class="btn btn-outline-dark" href="{% url 'post' %}">Volver</a>
+    <h1 style="text-align: center;">{{post.titulo}}</h1>
+    <br>
+    <h3 style="text-align: center;"> {{post.descripcion}}</h3>
+    <br><br>
+    <p>{{post.contenido|safe}}</p>
+    <br><br>
+    <h5>Autor: </h5>{{post.autor}}
+    <br><br>
+    <h5>Publicado el:</h5>{{post.publicado}}
+    <br><br>
+    <a class=" btn btn-outline-dark " href="{% url 'post' %} ">Volver</a>
 </ul>{% endblock%}

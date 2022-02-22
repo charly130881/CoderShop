@@ -20,10 +20,13 @@ from django.contrib.auth import login, logout, authenticate, models
 from CoderShop.forms import UserCreationForm, UserEditForm
 # Create your views here.
 
+
 class AvatarView:
+     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["url"] = Avatar.objects.filter(user=self.request.user.id).last().imagen.url
+        
         return context
 
 
@@ -32,7 +35,7 @@ def welcomePage(request):
     
     return render(request, 'CoderShop/welcomePage.html')
 
-
+@login_required
 def inicio(request):
     
     avatares = Avatar.objects.filter(user=request.user.id)
@@ -67,22 +70,8 @@ def post(request):
     return render(request, 'CoderShop/blog.html',
     {'post': Post.objects.all()})    
     
-    
 
-# def vendedorFormulario(request):
-#     if request.method == 'POST':
-        
-#         formulario = VendedorForm(request.POST)
-        
-#         if formulario.is_valid():
-#             data = formulario.cleaned_data
-#             Vendedor.objects.create(nombre=data['nombre'], apellido=data['apellido'], legajo=data['legajo'])
-#             return redirect('Vendedor')
-#     else:
-#         formulario = VendedorForm()
-       
-#     return render(request, "CoderShop/vendedorFormulario.html", {"formulario":formulario})
-
+@login_required
 def productoFormulario(request):
     if request.method == 'POST':
         
@@ -96,7 +85,7 @@ def productoFormulario(request):
         formulario = ProductoForm()
        
     return render(request, "CoderShop/productoFormulario.html", {"formulario":formulario})
-
+@login_required
 def clienteFormulario(request):
     if request.method == 'POST':
         
@@ -111,16 +100,19 @@ def clienteFormulario(request):
        
     return render(request, "CoderShop/clienteFormulario.html", {"formulario":formulario})
 
+
+@login_required
 def buscarLegajo(request):
     
     return render(request, "CoderShop/buscarLegajo.html")
 
+
+@login_required
 def buscar(request):
    
     if request.GET['legajo']:
-        # respuesta = f"Estoy buscando el legajo nro.: {request.GET['legajo']}"
+        
         legajo = request.GET['legajo']
-    
         vendedor = Vendedor.objects.filter(legajo=legajo)
         
         return render(request, "CoderShop/buscar.html",
@@ -129,14 +121,16 @@ def buscar(request):
     else:
         respuesta = "No enviaste datos"
    
-    # return HttpResponse(respuesta)
+    
     return render(request, "CoderShop/inicio.html", {"respuesta":respuesta})
 
-
+@login_required
 def buscarNombre(request):
     
     return render(request, "CoderShop/buscarNombre.html")
 
+
+@login_required
 def buscar2(request):
    
     if request.GET['nombre']:
@@ -158,46 +152,11 @@ def buscar2(request):
     return render(request, "CoderShop/inicio.html", {"respuesta":respuesta})
 
 
-
-
-
-# def vendedor_delete(request, vendedor_id):
-    
-#     vendedor = Vendedor.objects.get(id=vendedor_id)
-#     vendedor.delete()
-#     # vendedor = Vendedor.objects.all()
-    
-    
-    
-    
-#     return redirect('Vendedor')
-
-# def vendedor_update(request, vendedor_id):
-#     vendedor = Vendedor.objects.get(id=vendedor_id)
-    
-#     if request.method == 'POST':
-        
-#         formulario = VendedorForm(request.POST)
-        
-#         if formulario.is_valid():
-#             data = formulario.cleaned_data
-            
-#             vendedor.nombre = data['nombre']
-#             vendedor.apellido = data['apellido']
-#             vendedor.legajo = data['legajo']
-#             vendedor.save()
-            
-#             return redirect('Vendedor')
-#     else:
-#         formulario = VendedorForm(model_to_dict(vendedor))
-       
-#     return render(request, "CoderShop/vendedorFormulario.html", {"formulario":formulario})
-
-
 # Vendedores
 
 class VendedorListView(AvatarView, ListView):
     
+    login_required = True
     model = Vendedor
     template_name = 'CoderShop/vendedor.html'
     context_object_name = 'Vendedor'
@@ -283,42 +242,7 @@ class ProductoDeleteView(AvatarView, DeleteView):
 
 # Login
 
-# def login_request(request):
-#     if request.method == 'POST':
-#         form = AuthenticationForm(request, request.POST)
-        
-#         if form.is_valid():
-#             usuario = form.cleaned_data['username']
-#             password = form.cleaned_data['password']            
-#             user = authenticate(username=usuario, password=password)
-            
-#             if user is not None:
-#                 login(request, user) 
-#                 return redirect('Inicio')               
-#             else:
-#                 return render(request, 'CoderShop/login.html',
-#                         {'form': form, 
-#                         'error': 'No es válido el usuario y contraseña'})            
-#         else:
-#             return render(request, 'CoderShop/login.html', {'form': form})    
-#     else:
-#         form = AuthenticationForm()       
-#         return render(request, 'CoderShop/login.html', {'form': form})
-    
-# def register(request):
-#     if request.method == 'POST':
-#         form = UserRegisterForm(request.POST)
-            
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             form.save()
-#             messages.success(request, f'Usuario {username} creado con éxito!')
-#             return redirect('Inicio')
-#     else:
-#             form = UserRegisterForm()  
-           
-#             return render(request, 'CoderShop/register.html', {'form' : form })
-        
+       
 class UserCreateView(CreateView)  :
     model = User  
     # succes_url = reverse_lazy('login.html')
@@ -376,7 +300,7 @@ class BlogListView(AvatarView, ListView):
 class BlogCreateView(AvatarView, CreateView):
     model = Post
     success_url = reverse_lazy('post')
-    fields = ['titulo', 'descripcion', 'contenido', 'publicado', 'autor', 'estado']    
+    fields = ['titulo', 'descripcion', 'contenido', 'publicado', 'autor', 'estado','imagen']    
     template_name = 'CoderShop/postformulario.html'  
     
 class BlogDetailView(AvatarView, DetailView):
@@ -386,13 +310,18 @@ class BlogDetailView(AvatarView, DetailView):
 class BlogUpdateView(AvatarView, UpdateView):
     model = Post
     success_url = reverse_lazy('post')
-    fields = ['titulo', 'descripcion', 'contenido', 'publicado', 'autor', 'estado']    
+    fields = ['titulo', 'descripcion', 'contenido', 'publicado', 'autor', 'estado', 'imagen']    
     template_name = 'CoderShop/postformulario.html'
     
 class BlogDeleteView(AvatarView, DeleteView):
     model = Post
     success_url = reverse_lazy('post')
-    template_name = 'CoderShop/post_confirm_delete.html'         
+    template_name = 'CoderShop/post_confirm_delete.html'
+    
+# About
+
+def about(request):
+    return render(request, 'CoderShop/about.html')             
     
  
     

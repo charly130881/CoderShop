@@ -1,10 +1,27 @@
-{% extends "CoderShop/blogPadre.html" %} {% load static %} {% block contenidoQueCambia %} {% for post in object_list %}
-<table>
-    <h2>{{post.titulo}}</h2>
-    <p>{{post.descripcion}}</p>
-    <p>{{post.contenido}}</p>
-    <p>{{post.publicado}}</p>
-    <p>{{post.autor}}</p>
-</table>
-<a class="btn btn-outline-dark" href="{% url 'post_confirm_delete' post.id %}">Eliminar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'post_update' post.id %}">Editar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'ver_post' post.id %}">Ver</a>
-<br> {% endfor %}<br> <a class="btn btn-outline-dark" href="{% url 'postFormulario' %}">Agregar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'Inicio' %}">Volver</a> <br><br> {% endblock %}
+{% extends "CoderShop/blogPadre.html" %} {% load static %} {% block contenidoQueCambia %}
+<div class="container">
+    <div class=" row ">
+        {% for post in object_list %}
+        <div class="col-3 ">
+            <div class="card " style="width: 20rem;" margin-left>
+                {% if post.imagen %}<img src="{{ post.imagen.url }}" height="250px">{% endif %}
+                <div class=" card-body " style="background-color:antiquewhite;">
+                    <h1 class="card-title " style="text-align: center;">{{post.titulo}}</h1><br>
+                    <h4 class="card-text " style="text-align: center;">{{post.descripcion}}</h4><br>
+                    <h5 class="card-text ">{{post.contenido|safe|truncatechars:40}}</h5>
+                    <a style="text-align: right;" href=" {% url 'ver_post' post.id %} ">Leer más</a><br>
+                    <p class="card-text " style="text-align: center; ">{{post.publicado}}</p><br>
+                    <p class="card-text " style="text-align: right; ">{{post.autor}}</p>
+                    <p class="card-text ">{{post.estado}}</p>
+                </div>
+            </div>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark " href="{% url 'post_confirm_delete' post.id %} ">Eliminar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark " href="{% url 'post_update' post.id %} ">Editar</a>&nbsp;&nbsp;
+            <a class="btn btn-outline-dark " href="{% url 'ver_post' post.id %} ">Ver</a>
+            <br><br>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark " href="{% url 'postFormulario' %} ">Agregar</a>&nbsp;&nbsp;<a class="btn btn-outline-dark " href="{% url 'Inicio' %} ">Volver</a> <br><br> {% endblock %}

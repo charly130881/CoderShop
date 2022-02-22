@@ -1,13 +1,15 @@
 {% extends "CoderShop/welcomePage.html" %}{% load static %} {% block contenidoQueCambia %}{% if form.erros %}
 <p style="color: red;">Están mal los datos, revisar</p>
 {% endif %}
-<h3>Loguearse</h3>
+<center>
+    <h3>Loguearse</h3>
 
-<form action="" method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
 
-    <input type="submit" value="Iniciar Sesión">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'WelcomePage' %}">Volver</a>
-</form>{% endblock %}
+        <input class="btn btn-outline-dark" type="submit" value="Iniciar Sesión">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'WelcomePage' %}">Volver</a>
+    </form>
+</center>{% endblock %}

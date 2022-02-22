@@ -7,6 +7,8 @@ from django.db.models import Model, ForeignKey, CASCADE, ImageField
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
+from ckeditor.fields import RichTextField
+
 # Create your models here.
 class Producto(models.Model):
     
@@ -47,14 +49,7 @@ class Avatar(models.Model):
     def __str__(self):
         return f'* Usuario: {self.user} | imagen: {self.imagen}'
     
-# Blog
 
-# # class Categoria(models.Model):
-    
-#     nombre = models.CharField(max_length=100)
-    
-#     def __str__(self):
-#         return self.nombre
 
 class Post(models.Model):
     
@@ -65,18 +60,19 @@ class Post(models.Model):
     
     
     opciones = (
-        ('borrador', 'Borrador'),
-        ('publicado', 'Publicado'),
+        ('Borrador', 'Borrador'),
+        ('Publicado', 'Publicado'),
     )    
     
     titulo = models.CharField(max_length=255)
-    descripcion = models.TextField(null=True)
-    contenido = models.TextField(null=True)
+    descripcion = models.CharField(null=True, max_length=50)
+    contenido = RichTextField(null=True, blank=True)
     publicado = models.DateTimeField(default=timezone.now)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
-    estado = models.CharField(max_length=10, choices=opciones, default='borrador')     
+    estado = models.CharField(max_length=10, choices=opciones, default='Borrador')     
     objects = models.Manager()
     postobjects = PostObjects()
+    imagen = models.ImageField(upload_to="post", null=True)
     
     class Meta:
         ordering = ('-publicado',)      
@@ -93,35 +89,3 @@ class Post(models.Model):
           
         
 
-# class Comentarios(models.Model):
-    
-#     post = models.ForeignKey(on_delete=models.CASCADE, related_name='comentarios')
-#     nombre = models.CharField(max_length=55)
-#     email = models.EmailField()
-#     Contentenido = models.TextField
-#     publicado = models.DateTimeField(auto_now_add=True)
-#     estado = models.BooleanField(default=True)  
-    
-#     class Meta:
-#         ordering = ("publicado",)
-        
-#         def __str__(self):
-#             return f"Comentario de {self.nombre}"    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        

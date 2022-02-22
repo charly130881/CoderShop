@@ -2,14 +2,16 @@
 <p style="color: red;">Están mal los datos, revisar</p>
 {% endif %}
 
-<p>AGREGAR VENDEDORES</p>
-<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+<center>
+    <p>AGREGAR VENDEDORES</p>
+    <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 
-    <table>
-        {{ form.as_table }}
-    </table>
+        <table>
+            {{ form.as_table }}
+        </table>
 
-    <input class="btn btn-outline-dark" type="submit" value="Agregar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'Vendedor' %}">Volver</a>
+        <input class="btn btn-outline-dark" type="submit" value="Agregar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-dark" href="{% url 'Vendedor' %}">Volver</a>
 
-</form>
+    </form>
+</center>
 {% endblock%}

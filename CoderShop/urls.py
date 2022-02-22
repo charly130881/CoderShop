@@ -1,13 +1,15 @@
-from django.urls import path
+from django.urls import  path
 from CoderShop import views
-from CoderShop.views import BlogDeleteView, BlogDetailView, BlogListView, BlogCreateView, BlogUpdateView, ProductoListView, ProductoDetailView, ProductoCreateView, ProductoUpdateView, ProductoDeleteView, ClienteCreateView, ClienteListView, ClienteUpdateView, ClienteDeleteView, ClienteDetailView, UserCreateView, VendedorCreateView, VendedorListView, VendedorUpdateView, VendedorDeleteView, VendedorDetailView, agregarAvatar, buscar, buscarNombre, cliente, inicio, producto, vendedor, clienteFormulario, buscarLegajo, productoFormulario, buscar2, welcomePage, editarUsuario
+from CoderShop.views import BlogDeleteView, BlogDetailView, BlogListView, BlogCreateView, BlogUpdateView, ProductoListView, ProductoDetailView, ProductoCreateView, ProductoUpdateView, ProductoDeleteView, ClienteCreateView, ClienteListView, ClienteUpdateView, ClienteDeleteView, ClienteDetailView, UserCreateView, VendedorCreateView, VendedorListView, VendedorUpdateView, VendedorDeleteView, VendedorDetailView, agregarAvatar, buscar, buscarNombre, cliente, inicio, producto, vendedor, clienteFormulario, buscarLegajo, productoFormulario, buscar2, welcomePage, editarUsuario, about
 from django.contrib.auth.views import LogoutView, LoginView
+from django.conf.urls import include
 
 
 urlpatterns = [
     
     path('', welcomePage, name="WelcomePage"),
     path('inicio', inicio, name="Inicio"),
+    
     # Busqueda
     path('buscarLegajo', buscarLegajo, name="BuscarLegajo"),
     path('buscar', buscar, name="buscar"), 
@@ -43,7 +45,8 @@ urlpatterns = [
     path('postFormulario', BlogCreateView.as_view(), name="postFormulario"),
     path('postFormulario/update/<pk>', BlogUpdateView.as_view(), name="post_update"),
     path('post/delete/<pk>', BlogDeleteView.as_view(), name='post_confirm_delete'),
-    
+    # About
+    path('about', about, name='about')
     
    
 ]

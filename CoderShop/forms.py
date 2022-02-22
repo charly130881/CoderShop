@@ -58,8 +58,8 @@ class AvatarFormulario(Form):
     
 class BlogForm(forms.Form):
     titulo = CharField(max_length=255)
-    descripcion = CharField(max_length=40)
-    contenido = CharField(max_length=300)
+    descripcion = CharField(max_length=250)
+    contenido = CharField()
     publicado = DateField()
     autor = CharField()
     estado = CharField()             
